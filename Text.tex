@@ -1,0 +1,843 @@
+\documentclass{article}
+\usepackage{graphicx} % Required for inserting images
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amsopn}
+\usepackage{comment}
+\usepackage{amssymb}
+
+\theoremstyle{defin}
+\newtheorem{definition}{Definition}
+
+\theoremstyle{theorem}
+\newtheorem{theorem}{Theorem}
+
+\theoremstyle{claim}
+\newtheorem{claim}{Claim}
+
+\theoremstyle{prop}
+\newtheorem{prop}{Proposition}
+
+\theoremstyle{lemma}
+\newtheorem{lemma}{Lemma}
+
+\theoremstyle{fact}
+\newtheorem{fact}{Fact}
+
+\theoremstyle{remark}
+\newtheorem{remark}{Remark}
+
+\theoremstyle{ex}
+\newtheorem{ex}{Example}
+
+\theoremstyle{col}
+\newtheorem{col}{Corollary}
+
+\theoremstyle{question}
+\newtheorem{question}{Question}
+
+\let\strokeL\L
+\renewcommand\L{\mathbf{L}}
+
+\title{Cylindric notes}
+\author{Daniel Rogozin}
+\date{May 2023}
+
+\begin{document}
+
+\maketitle
+
+\nocite{*}
+
+
+
+
+\section{Cylindric algebras: background}
+
+\subsection{Atomic representations of Boolean algebras}
+
+Let $B$ be a Boolean algebra, an element $a$ is an \emph{atom} if for every $b \in B$
+$b < a$ implies $b = 0$. $\operatorname{At}(B)$ is the set of all atoms
+of $B$.
+
+\begin{definition} \label{compeleterep}
+Let $B$ be a Boolean algebra and $F$ a field of sets such that $h : B \to F$ is a
+representation of $B$, then $B$ is a complete representation of $B$, if for every
+$A \subseteq B$ such that $\Sigma A$ is defined the following holds:
+\begin{equation}
+  h(\Sigma A) = \bigcup \limits_{a \in A} h(a)
+\end{equation}
+\end{definition}
+
+A representation $h$ is called atomic, if $x \in h(1)$, then there exists $b \in \operatorname{At}(\mathcal{B})$ such that $x \in h(b)$.
+
+\begin{theorem} \label{completeboolean}
+  Let $\mathcal{B}$ be a Boolean algebra, then $\mathcal{B}$ is atomic iff $\mathcal{B}$ is completely representable. See \cite[Corollary 6]{hirsch1997complete}.
+\end{theorem}
+
+\subsection{Proper cylindric algebras}
+
+Let $X \neq \emptyset$ along and $X^{\omega} = \{ f \: | \: f : \omega \to X \}$.
+Let $x \in X^{\omega}$, $x_i$ stands for $x(i)$ for $i < \omega$. A subset of $X^{\omega}$ is an $\omega$-ry relation on $U$. For $i, j < \omega$, the \emph{$i,j$-diagonal} $D_{ij}$ is the set of all elements of $X^{\omega}$ such that $y_i = y_j$.
+
+If $i < \omega$ and $Y$ is an $\omega$-ry relation on $X$, then
+the $i$-th cylindrification $C_i Y$ is the set of all elements of $U$ that agree with some element of $Y$ on each coordinate except, perhaps, the $i$-th one:
+\begin{center}
+$C_i Y = \{ y \in X^{\omega} \: |
+\: \exists x \in Y \forall i < \omega \: (i \neq j \Rightarrow y_j = x_j)\}$.
+\end{center}
+We define the following equivalence relation for $i < \alpha$ and $x, y \in X^{\omega}$:
+\begin{center}
+ $x \equiv_i y \Leftrightarrow \forall j \in \alpha \: (i \neq j \Rightarrow x(i) = y(j))$
+\end{center}
+Then one may reformulate the definition of the $i$-th cylindrification the following way:
+
+\begin{center}
+ $C_i Y = \{ y \in X^{\omega} \: | \: \exists x \in X \:\: x \equiv_i y \}$
+\end{center}
+
+According to this version of the definition, one can think of cylindrification operators as ${\bf S5}$ modalities.
+
+\begin{definition}
+ A cylindic set algebra of dimension $\omega$ is an algebra consisting of a set $S$ of $\omega$-ry relation on some base set $X$
+   with the constants and operations $0 = \emptyset$, $1 = X^{\omega}$, $\cap$, $-$, the diagonal elements $(D_{ij})_{i, j < \omega}$, the cylindrifications $(C_i)_{i < \omega}$. A generalised cylindric set algebra of dimension $\omega$ is a subdirect of cylindric algebras that have dimension $\omega$.
+   ${\bf Cs}_{\omega}$ denotes the class of all cylindric set algebras of dimension $\omega$.
+\end{definition}
+
+\begin{definition}
+   A cylindric algebra of dimension $\\omega$ is an algebra $C = (B,  (c_i)_{i < \omega}, (d_{ij})_{i, j < \omega})$ such that $B$ is a Boolean algebra, each $d_{ij} \in \mathcal{B}$ and for all $i, j, k < \omega$ and for all $a, b \in B$:
+   \begin{enumerate}
+     \item $c_i 0 = 0$,
+     \item $c_i (a + b) = c_i a + c_i b$
+     \item $a \leq c_i a$,
+     \item $c_i (a \cdot c_i b) = c_i a \cdot c_i b$
+     \item $d_{ii} = 1$,
+     \item $c_i c_j a = c_j c_i a$,
+     \item If $k \neq i, j$, then $d_{ij} = c_k (d_{ij} \cdot d_{jk})$,
+     \item If $i \neq j$, then $c_i (d_{ij} \cdot a) \cdot c_i (d_{ij} \cdot - a) = 0$.
+   \end{enumerate}
+   ${\bf CA}_{\omega}$ is the class of all cylindric algebras of dimension $\omega$.
+\end{definition}
+
+One can define a representation of a cylindric algebra explicitly the following way:
+
+\begin{definition}
+ Let $\mathcal{A}$ be a cylindric algebra of dimension $\omega$. A representation of $\mathcal{A}$ over the non-empty domain $X$ is a one-to-one map $f : \mathcal{A} \hookrightarrow 2^{X^{\omega}}$ such that:
+ \begin{enumerate}
+   \item $f(1) = \bigcup \limits_{i \in I} X_i^{\omega}$ for some disjoint family $\{X_i\}_{i \in I}$ where each $X_i \subseteq X$
+   \item $h : \mathcal{A} \to 2^{f(1)}$ is a representation of a Boolean reduct
+   \item for all $i, k < \omega$, $x \in h(d_{ik})$ iff $x_{i} = x_{k}$
+   \item for all $i < \omega$ and $a \in \mathcal{A}$, $x \in h(c_{i}(a))$ iff there is $y \in X$ such that $x[i \mapsto y] \in h(a)$
+ \end{enumerate}
+\end{definition}
+
+Let $C$ be a cylindric algebra, $C$ is \emph{representable} if there exists a representation of $C$. ${\bf RCA}_{\omega}$ is the class of all representable cylindric algebras. Alternatively, ${\bf RCA}_{\omega}$ can be defined as the closure of ${\bf Cs}_{\omega}$ under isomorphism:
+\begin{center}
+${\bf RCA}_{\omega} = {\bf ICs}_{\omega}$.
+\end{center}
+
+It is well known that ${\bf RCA}_{\omega}$ is a variety, ${\bf RCA}_{\alpha}$ ($\alpha \leq 2$) is finitely axiomatisable and ${\bf RCA}_{\alpha}$ ($2 < \alpha < \omega$) has no finite axiomatisation, see \cite{Henkin1988-HENCAP-4}.
+
+Let $C \in {\bf RCA}_{\omega}$, $\mathcal{A}$ has a \emph{complete representation} if its representation preserves all existing suprema as in Definition~\ref{compeleterep}.
+In other words, $\mathcal{A}$ is \emph{completely representable}.
+
+\begin{prop}
+Let $A \in {\bf CA}_{\omega}$, then $A$ is completely representation iff it has an atomic representation.
+\end{prop}
+
+\begin{proof}
+Follows from Theorem~\ref{completeboolean}.
+\end{proof}
+
+\section{Atom structures and canonical extensions}
+
+First of all, we introduce the following operations on classes of algebras or frames. Let $\mathcal{A}$ be a class of algebras and $\mathcal{F}$ a class of frames, then:
+\begin{itemize}
+\item ${\bf I} \mathcal{K}$ is the closure of $\mathcal{K}$ under isomorphic copies,
+\item ${\bf Ud} \mathcal{F}$ is the closure of $\mathcal{F}$ under disjoint unions,
+\item ${\bf Ub} \mathcal{F}$ is the closure of $\mathcal{F}$ under bounded unions,
+\item $\mathcal{F}^+$ is the class of all complex algebras generated from elements of $\mathcal{F}$,
+\item ${\bf Pu} \mathcal{K}$ is the closure of $\mathcal{K}$ under ultraproducts,
+\item ${\bf Pw} \mathcal{K}$ is the closure of $\mathcal{K}$ under ultrapowers,
+\item ${\bf S} \mathcal{A}$ is the closure of $\mathcal{A}$ under subalgebras,
+\item $\mathbb{S} \mathcal{F}$ is the closure of $\mathcal{F}$ under generated subframes,
+\item $\mathbb{H} \mathcal{F}$ is the closure $\mathcal{F}$ under $p$-morphic images.
+\end{itemize}
+
+The following definition of an $\omega$-frame is taken from \cite{Venema2013}.
+\begin{definition}
+  A cylindric $\omega$-frame is a structure $F = (W, (R_i)_{i < \omega}, (E_{ij})_{i, j < \omega})$ where $(R_i)_{i < \omega}$ are binary relations and $(E_{ij})_{i, j < \omega}$ are unary relations such that, for all $i, j, k < \omega$:
+  \begin{enumerate}
+  \item Every $R_i$ is an equivalence relation on $W$,
+  \item $R_i \circ R_j = R_j \circ R_i$,
+  \item For all $x \in W$, $E_{ii} = W$.
+  \item For all $x, y, z \in W$, if $x R_i y$, $x R_i z$, $E_{ij} = W$ and $E_{ij} = W$, then $y = z$.
+  \item For all $x \in W$, $E_{ij} = W$ iff there exists $y \in W$ such that $x R_k y$, $E_{ik} = W$, and $E_{kj} = W$.
+\begin{comment}
+  \item For all $x, z \in W$, if $E_{ij} = W$ and there exists $y \in W$ such that $z \neq y$, $x R_i y$, $x R_j z$, then there exists $u \in W$ such that $E_{ij} = \emptyset$, $x R_j u$ and $u R_i z$.
+\end{comment}
+  \end{enumerate}
+  ${\bf CFrames}_{\omega}$ is the class of all $\omega$-frames.
+\end{definition}
+
+\begin{remark}
+
+$ $
+
+Observe that the conditions of cylindric $\omega$-frames can be expressed as first-order formulas. Therefore, ${\bf CFrames}_{\omega}$ is an elementary class.
+\end{remark}
+
+We can associate a complete atomic cylindric algebra of dimension $\omega$ with every cylindric $\omega$-frame $F = (W, (R_i)_{i < \omega}, (E_{ij})_{i, j < \omega})$ by taking its \emph{complex algebra}, which is the algebra $F^{+} = (2^{W}, \cup, -, (C_i)_{i < \omega}, \emptyset, W, (E_{ij})_{i, j < \omega})$ where each $C_i$ is an operator $C_i : 2^W \to 2^W$ defined as:
+\begin{center}
+$C_i A = \{ w \in W \: | \: \exists a \in A \: w R a \} = R_i^{-1}(A)$.
+\end{center}
+
+If $F \in {\bf CFrames}_{\omega}$ and $x \in F$, then $F^{x}$ is a \emph{generated subframe} generated by $x$. Generally, $F_1$ is a generated subframe of $F_2$, if $W_1 \subseteq W_2$, ${R_i}_1 \subseteq {R_i}_2$ and for all $x \in W_1$ $y \in {R_i}_2(x)$ implies $y \in W_1$ for every $i < \omega$. That is, for all $i < \omega$ and $x \in F_1$, we have ${R_i}_2(x) \subseteq F_1$ and, thus, ${R_i}_1(x) = {R_i}_2(x)$.
+
+Given cylindric $\omega$-frames $F_1 = (W_1, ({R_i}_1)_{i < \omega}, ({E_{ij}}_1)_{i, j < \omega})$ and \\ $F_2 = (W_2, ({R_i}_2)_{i < \omega}, ({E_{ij}}_2)_{i, j < \omega})$. A \emph{bounded morphism} is a function $f : F_1 \to F_2$ such that, for each $i, j < \omega$:
+\begin{enumerate}
+\item (Monotonicity) $x {R_i}_1 y$ implies $f(x) {R_i}_2 f(y)$ for all $x, y \in W_1$,
+\item (The lifting property) If $f(x) {R_i}_2 z$, then there exists $y \in {R_i}_1(x)$ such that $f(y) = z$,
+\item $x \in {E_{ij}}_1$ iff $f(x) \in {E_{ij}}_2$.
+\end{enumerate}
+A bounded morphism is a \emph{$p$-morphism} if it is onto. Notation: $F_1 \twoheadrightarrow F_2$. In this case, we say that $F_1$ is a \emph{$p$-morphic image} of $F_2$. 
+
+We have the following connection between $\omega$-frames and their generated subframes, which is standard for modal logic:
+\begin{prop}
+Let $F \in {\bf CFrames}_{\omega}$, then
+\begin{enumerate}
+\item $F = \coprod \limits_{x \in F} F^{x}$,
+\item $F^+ \cong \prod \limits_{x \in F} (F^{x})^+$,
+\item $(F^{x})^+$ is subdirectly irreducible.
+\end{enumerate}
+\end{prop}
+
+Let $F$ be a cylindric $\omega$-frame and let $(F_j)_{j \in J}$ be a family of cylindric $\omega$-frames such that each $F_j$ is a generated subframe of $F$. Then $G = (W, R_i, E_{ij})$ is the \emph{bounded union} of $(F_j)_{j \in J}$, where $W = \bigcup \limits_{j \in J} W_j$ and $R_i$ and $E_{ij}$ are defined by corresponding relations in $F_j$'s.
+
+The following fact connects cylindric frames and cylindric algebras through complex algebras, see \cite[Proposition 2.1.5]{Venema2013}:
+\begin{prop} \label{framealgebra}
+A structure $F$ is a cylindric $\omega$-frame iff $F^{+}$ is a cylindric algebra of dimension $\omega$.
+\end{prop}
+
+Let $(F_j)_{j \in J}$ be a disjoint family of cylindric $\omega$-frames, the \emph{disjoint sum} of $(F_i)_{i \in I}$ is $F = \coprod \limits_{i \in I} F_i$, where each $R_i = \bigcup \limits_{j \in J} {R_i}_j$ and $E_{ik} = \bigcup \limits_{j \in J} {E_{ik}}_j$. Disjoint sums and direct products are connected with one another through complex algebras as follows (see \cite[Lemma 3.4.1]{goldblatt1989varieties}):
+\begin{equation} \label{prod}
+(\coprod \limits_{j \in J} F_j)^{+} \cong \prod \limits_{j \in J} F_j^{+}
+\end{equation}
+
+
+\vspace{\baselineskip}
+
+We define a particular frame of cylindric $\omega$-frames. Let $X$ be a non-empty set, the \emph{full Cartesian structure over $X$ of dimension $\omega$} is a cylindric $\omega$-frame $\mathfrak{C}(X) = (X^{\omega}, (\equiv_i)_{i < \omega}, (\operatorname{Id}_{ij})_{i, j < \omega})$. $\mathcal{F}\mathfrak{ct}_{\omega}$ is the class of all full Cartesian structures of dimension $\omega$. Observe that
+\begin{equation} \label{cmcubes}
+{\bf Cs}_{\omega} = (\mathcal{F}\mathfrak{ct}_{\omega})^{+},
+\end{equation}
+\begin{equation} \label{isocmcubes}
+{\bf I Cs}_{\omega} = {\bf S}(\mathcal{F}\mathfrak{ct}_{\omega})^{+}.
+\end{equation}
+
+The class of \emph{generalised cylindric set algebras} of dimension $\omega$, ${\bf Gs}_{\omega}$, consists of complex algebras of the closure of $\mathcal{F}\mathfrak{ct}_{\omega}$ under disjoint unions:
+\begin{equation} \label{Gsone}
+{\bf Gs}_{\omega} = ({\bf Ud}(\mathcal{F}\mathfrak{ct}_{\omega}))^{+}
+\end{equation}
+or, by~(\ref{prod}):
+\begin{equation} \label{Gstwo}
+{\bf Gs}_{\omega} = {\bf P} (\mathcal{F}\mathfrak{ct}_{\omega}^{+})
+\end{equation}
+${\bf RCA}_{\omega}$ is the closure of ${\bf Gs}_{\omega}$ under isomorphism:
+\begin{equation}
+{\bf RCA}_{\omega} = {\bf IGs}_{\omega}
+\end{equation}
+or, assuming (\ref{Gsone}) and (\ref{Gstwo}):
+\begin{equation}
+{\bf RCA}_{\omega} = {\bf IGs}_{\omega} = {\bf S} (({\bf Ud} (\mathcal{F}\mathfrak{ct}_{\omega}))^{+}) = {\bf S} {\bf P} (\mathcal{F}\mathfrak{ct}_{\omega}^{+}).
+\end{equation}
+
+\vspace{\baselineskip}
+
+If $C \in {\bf CA}_{\omega}$ is atomic, then we can associate a cylindric omega frame with it. Let $C$ be an atomic cylindric algebra of dimension $\omega$, its \emph{atom structure} is the structure ${\bf At}(C) = (\operatorname{At}(C), (R_i)_{i < \omega}, (E_{ij})_{i, j < \omega})$ such that each $E_{ij} \subseteq {\bf At}(C)$ and for all $i < \omega$ and for all $a, b \in \operatorname{At}(C)$:
+\begin{center}
+$a R_i b$ iff $c_i b \leq a$.
+\end{center}
+
+As a corollary from Proposition~\ref{framealgebra}:
+
+\begin{prop}
+If $C \in {\bf CA}_{\omega}$ is atomic, then ${\bf At}(C)$ is a cylindric $\omega$-frame.
+\end{prop}
+
+
+
+\begin{comment}
+We are interested in the special case of cylindric $\omega$-frames called Cartesian structure of dimension $\omega$. To be more precise:
+
+\begin{definition}
+TODO: Check that definition in \cite{goldblatt1995elementary}
+
+Let $U$ be a set and $V \subseteq U^{\omega}$ be a non-empty subset of the full Cartesian space of dimension $\omega$, then an $\alpha$-dimension Cartesian structure generated by $V$ is an $\omega$-frame $\operatorname{S}(V) = (V, (R_{i})_{i < \omega}, (E_{ij})_{i, j < \omega})$ such that:
+\begin{enumerate}
+\item $R_i = \{ (w, v) \: | \: w, v \in V, w_k = w_k, k < \omega, i \neq k \}$
+\item $E_{ij} = \{ w \in V \: | \: w_i = w_j \}$
+\end{enumerate}
+$\operatorname{S}(U^{\omega})$ is the full $\omega$-dimensional Cartesian structure. ${\bf Fct}_{\omega}$ is the class of all full $\omega$-dimensional Cartesian structures. Clearly ${\bf Fct}_{\omega} \subseteq \operatorname{Ca}_{\omega}$.
+\end{definition}
+\end{comment}
+
+\section{Canonical extensions}
+
+Let $B$ be a Boolean algebra, a proper subset $F \subsetneq B$ is an \emph{filter} if the following holds:
+\begin{enumerate}
+\item $a \in B$ and $a \leq b$ imply $b \in B$,
+\item If $a, b \in B$, then $a \cdot b \in B$.
+\end{enumerate}
+A filter $U$ is an \emph{ultrafilter} if either $a \in U$ or $- a \in U$, or, equivalently, $U \subseteq U'$ implies $U = U'$. ${\bf Spec}(B)$ is the \emph{spectum} of $B$, that is, the set of all ultrafilters of $B$.
+
+Let $C$ be a cylindric algebra of dimension $\omega$, the ultrafilter frame of $C$ is a structure $C_+ = ({\bf Spec}(C), (R_i)_{i < \omega}, (E_{ij})_{i, j < \omega})$ such that, for all $U_1, U_2 \in {\bf Spec}(C)$ and for all $i, j < \omega$:
+\begin{enumerate}
+\item $U_1 R_i U_2$ iff $\{ c_i a \: | \: a \in U_2 \} \subseteq U_1$,
+\item $E_{ij} \subseteq {\bf Spec}(C)$.
+\end{enumerate}
+
+From Proposition~\ref{framealgebra} we have:
+\begin{prop}
+If $C$ is a cylindric algebra, then $C_+$ is a cylindric $\omega$-frame.
+\end{prop}
+
+\emph{The canonical extension} of $C$ is the algebra $(C_+)^+$, that is, the complex algebra of the ultrafilter frame.
+
+\begin{theorem} (See \cite{jonsson1951boolean})
+
+$C \in {\bf CA}_{\omega}$ embeds to $(C_+)^+$ by mapping $a \mapsto \{ U \in {\bf Spec}(C) \: | \: a \in U \}$.
+\end{theorem}
+
+\section{Canonicity of ${\bf RCA}_{\omega}$}
+
+In this section, we reproduce the results related to characterisation ${\bf RCA}_{\omega}$. The following results are due to Goldblatt \cite{goldblatt1995elementary}. This denotes that a cylindric algebra of dimension algebra is representable iff it is isomorphic to a subalgebra of the complex algebra of disjoint sum of some full $\omega$-dimensional Cartesian structure.
+
+\vspace{\baselineskip}
+
+The following characterisation result is known from \cite[Theorem 2.2.3]{Venema2013}.
+
+\begin{theorem}
+${\bf RCA}_{\omega} = {\bf HSP}(\mathcal{F}\mathfrak{ct}_{\omega}^{+})$
+\end{theorem}
+
+That is, the class of representable cylindric algebras of dimension $\omega$ is a variety generated by complex algebras of full Cartesian structures of dimension $\omega$. If we consider the equational theory of ${\bf RCA}_{\omega}$ as a polymodal logic, we could say that it is Kripke complete with respect to the class of all full Cartesian structures of dimension $\omega$.
+
+To show that ${\bf RCA}_{\omega}$ is canonical we have got to show the following inclusion:
+
+\begin{center}
+$({{\bf RCA}_{\omega}}_{+})^+ \subseteq {\bf RCA}_{\omega}$.
+\end{center}
+
+
+\begin{definition}
+The weak Cartesian space with base set $X$ and dimension $\omega$ determined by $x \in X^{\omega}$ is the set:
+\begin{center}
+${X^{\omega}}^{(x)} = \{ y \in X^{\omega} \: | \: \operatorname{card}(\{ k < \omega \: | \: x_k \neq y_k \}) < \aleph_0 \}$
+\end{center}
+$\mathfrak{S}_{\omega}({X^{\omega}}^{(x)})$ is a weak Cartesian structure of dimension $\omega$. $\mathcal{W}\mathfrak{ct}_{\omega}$ is the class of all weak Cartesian structure of dimension $\omega$ up to isomorphism.
+\end{definition}
+Note that we have $\mathcal{W}\mathfrak{ct}_{\omega} \subseteq {\bf CFrames}_{\omega}$.
+
+Define also the class $\mathcal{S}\mathfrak{ct}_{\omega}$ of \emph{sub-Cartesian structures of dimension $\omega$} consisting of $\mathfrak{S}_{\omega}(V)$ for $V \subseteq X^{\omega}$, where $X$ is a non-empty base set. Note that $\mathfrak{S}_{\omega}(V)$ does not have to be a cylindric $\omega$-frame.
+
+Let $F$ be a generated subframe of a full Cartesian structure of dimension $\omega$ $\mathfrak{C}(X)$, then
+\begin{equation}
+F \cong \coprod \limits_{x \in F} F^x
+\end{equation}
+or, by (\ref{prod}):
+\begin{equation}
+F^{+} \cong \prod \limits_{x \in F} (F^(x))^{+}
+\end{equation}
+The latter implies the inclusion:
+\begin{equation}
+(\mathbb{S} \mathcal{F}\mathfrak{ct}_{\omega})^+ \subseteq {\bf P} (\mathcal{W}\mathfrak{ct}_{\omega}^{+}).
+\end{equation}
+
+Note that (follows from \cite[p. 118]{henkin1981cylindric})
+\begin{fact}
+$\mathcal{W}\mathfrak{ct}_{\omega}^+ \subseteq {\bf RCA}_{\omega}$
+\end{fact}
+
+Complex algebras based on $\mathfrak{S}_{\omega}(X^x))$ form the class ${\bf Ws}_{\omega}$ of \emph{weak cylindric set algebras of dimension $\omega$}. The class ${\bf Gws}_{\omega}$ of \emph{generalised weak cylindric set algebras of dimension $\omega$} consists of complex algebras based on the closure of ${\bf Ws}_{\omega}$ under disjoint unions:
+\begin{equation}
+{\bf IWs}_{\omega} = {\bf S} (\mathcal{W}\mathfrak{ct}_{\omega}^{+})
+\end{equation}
+
+\begin{equation}
+{\bf IGws}_{\omega} = {\bf S} (({\bf Ud} \mathcal{W}\mathfrak{ct}_{\omega})^+) = {\bf S P} (\mathcal{W}\mathfrak{ct}_{\omega}^{+})
+\end{equation}
+
+The following is by Goldblatt, see \cite[Lemma 3.4]{goldblatt1995elementary}:
+\begin{lemma}
+${\bf RCA}_{\omega} = {\bf S} \: ((\mathbb{S} {\bf Ud} \mathcal{F}\mathfrak{ct}_{\omega})^{+}) = {\bf S} \: ((\mathbb{S} {\bf Ud} (\mathcal{W}\mathfrak{ct}_{\omega}))^{+}) = {\bf IGws}_{\omega}$
+\end{lemma}
+
+\subsection{Ultraproducts of full Cartesian structures}
+
+Let $(F_j)_{j \in J}$ be an indexed family of full Cartesian structures of dimension $\omega$, where each $F_j$ is of the form 
+\begin{center}
+$F_j = (W_j, ({R_i}_j)_{i < \omega}, ({E_{ik}}_j)_{i, k < \omega})$
+\end{center}
+and let $U$ be an ultrafilter on $U$. Define the following equivalence relation on $\prod \limits_{j \in J} W_j$ for $f, g \in \prod \limits_{j \in J} W_j$:
+\begin{center}
+$f \sim_{U} g$ iff $\{ j \in J \: | \: f(j) = g(j) \} \in J$
+\end{center}
+The \emph{ultraproduct} of $(F_j)_{j \in J}$ is an algebra $\prod \limits_{J} F_j / U = (W, (R_i)_{i < \omega}, (E_{ik})_{i, k < \omega})$, where $W = \prod \limits_{j \in J} W_j$ and
+\begin{enumerate}
+\item $f_U R_i g_U$ iff $\{ j \in J \: | \: {R_i}_j(f_U(j), g_U(j)) \} \in U$,
+\item $f_U \in E_{ik}$ iff $\{ j \in J \: | \: f_U(j) \in {E_{ik}}_j \} \in U$.
+\end{enumerate}
+where $f_U$ and $g_U$ are equivalence classes of $f$ and $g$ modulo $U$.
+
+See \cite[Lemma 3.5]{goldblatt1995elementary}, a similar construction for modal logics could be found in \cite{fine1975some}:
+\begin{lemma} \label{ultrapmor}
+
+Let $(F_j)_{j \in J}$ be an indexed family of full Cartesian structures of dimension $\omega$ and $U$ an ultrafilter on $J$. There exists a $p$-morphism:
+
+\begin{center}
+$\varphi : \prod \limits_{J} F_j / U \twoheadrightarrow \mathfrak{S}_{\omega}((\prod \limits_{J} W_j / U))$
+\end{center}
+that restricts to an isomorphism $F^x \cong I^{\varphi(x)}$ of generated subframes generated by $x \in F$.
+\end{lemma}
+
+\begin{proof}
+Consider the equation:
+\begin{equation} \label{func}
+f_i(j) = f(j)_i
+\end{equation}
+If $j \in \prod \limits_{j \in J} W^{\omega}_{j}$, then the equation defines a function $f_i \in \prod_{j \in J} W_j$ for each $i < \omega$. Then a sequence $(f_i)_{i < \omega}$ defines a function by Equation~\ref{func}. Clearly $f_U = g_U$ implies ${f_i}_U = {g_i}_U$ for $i < \omega$. So define $\varphi$ as:
+\begin{equation}
+\varphi(f_U) = ({f_i}_U)_{i < \omega}
+\end{equation}
+
+It is readily checked that:
+\begin{enumerate}
+\item $f_U \in E_{k l}$ iff ${f_k}_U = {f_l}_U$ iff $\varphi(f_U) \in E^{\omega}_{k l}$,
+\item $(f_U) R_k (g_U)$ implies ${f_l}_U = {g_l}_U$ whenever $k \neq l < \omega$, so $(f_U) R^{\omega}_k (g_U)$, so $\varphi$ is monotone.
+\end{enumerate}
+Let us show that $\varphi$ has the lifting property. Assume that $\varphi(f_U) R^{\omega}_k z$ where $z = (g_k)_{k < \omega}$. We have got to show that there exists $h_U$ such that $\varphi(h_U) = z$ and $(f_U) R_k (h_U)$. Put $h_k = g_k$ and $h_l = f_l$ for $k \neq l < \omega$, so for $k \neq l$ one has $(f_l)_U = (g_l)_U$ since $\varphi(f_U) R^{\omega}_k z$, so $(g_l)_U = (h_l)_U$, so $z = (h_U)$ are the same sequence. Moreover, $\{ j \: | \: h(j) {R_k}_j f(j)\} = J \in U$, since $h(j)_l = f(j)_l$ for $l \neq k$, so $(f_U) R_k (h_U)$ in the ultraproduct.
+
+\vspace{\baselineskip}
+
+Let us show that $\varphi$ acts isomorphically on every generated subframe $F^{x}$ of the ultraproduct. Take $f_U, g_U \in F^{x}$, then there are $i_0, \dots, i_n < \omega$ such that
+\begin{center}
+$f_U(R_{i_0} \circ \dots \circ R_{i_n})g_U$.
+\end{center}
+By \strokeL o\'s's theorem we have
+\begin{center}
+$J_{fg} = \{ j \in J \: | \: f(j)({R_{i_0}}_j \circ \dots \circ {R_{i_n}}_j)g(j) \}$
+\end{center}
+So for $J_{fg}$, the $\omega$-sequences $f(j)$ and $g(j)$ agree except possibly on $i_0, \dots, i_n$. If $\varphi(f_U) = \varphi(g_U)$, then for each $k < \omega$, ${f_k}_U = {g_k}_U$ and then:
+\begin{center}
+$J_k = \{ j \in J \: | \: f_k(j) = g_k(j) \} \in U$
+\end{center}
+But $f, g$ are identical on the set
+\begin{center}
+$J_k \cap J_{i_0} \cap \dots \cap J_{i_n} \in F$
+\end{center}
+and thus $f_U = g_U$, so $\varphi$ is injective on $F^{x}$.
+\end{proof}
+
+\begin{theorem} \label{puub}
+${\bf Pu}\mathcal{F}\mathfrak{ct}_{\omega} \subseteq {\bf Ub}\mathcal{F}\mathfrak{ct}_{\omega}$.
+\end{theorem}
+
+\begin{proof}
+Let $F = \prod \limits_J F_j / U$ be an ultraproduct of full Cartesian structures of dimension $\omega$. To show $F \in {\bf Ub}\mathcal{F}\mathfrak{ct}_{\omega}$ one needs to show that for each point $x \in F$ there exists a generated subframe that contains $x$ and is isomorphic to $I = \mathfrak{S}_{\omega}((\prod \limits_J F_j / U))$.
+
+Let $Z$ be a choice set that contains exactly one element from each weak Cartesian substructure of $I$. But $I$ is the disjoint union of all its weak substructures, so we have:
+\begin{center}
+$I = \coprod \limits_{z \in Z} I^z$
+\end{center}
+Fix $x \in F$, for each $z \in Z$ choose $\psi(z)$ to be any member of $F$ such that $\varphi(\psi(z)) = z$ and $I^z$ is the weak substructure containing $\varphi(x)$, where $\varphi$ is a $p$-morphism from Lemma~\ref{ultrapmor}. By the previous lemma, we have
+\begin{center}
+$F^{\psi(z)} = I^z$.
+\end{center}
+
+If $z$ and $z'$ are different elements of $Z$, so $I^z$ and $I^{z'}$ are disjoint, so $F^{\psi(z)}$ and $F^{\psi(z')}$ are also disjoint. 
+
+$F(x)$ is defined to be the union of the collection of $\{ F^{\psi(z)} \: | \: z \in Z \}$ and forms a generated subframe of $F$ which is isomorphic of $I^z$'s, so $F^x \cong I$, but $x = \psi(z)$ for some $z$, so $x \in F(x)$. 
+\end{proof}
+
+\begin{col}
+${\bf Ub}\mathcal{F}\mathfrak{ct}_{\omega}$ is closed under ultraproducts.
+\end{col}
+
+\begin{theorem}
+$ $
+
+\begin{enumerate}
+\item ${\bf Pu}\mathcal{W}\mathfrak{ct}_{\omega} \subseteq {\bf Ub}\mathcal{W}\mathfrak{ct}_{\omega}$,
+\item ${\bf Pu}\mathcal{S}\mathfrak{ct}_{\omega} \subseteq \mathcal{S}\mathfrak{ct}_{\omega}$.
+\end{enumerate}
+\end{theorem}
+
+\begin{proof}
+$ $
+\begin{enumerate}
+\item Let $F^* = \prod \limits_{J} F^*_j / U$ be an ultraproduct of weak Cartesian structures of dimension $\omega$. Each $F^*_j$ is a generated subframe of some full Cartesian structure $F_j$, so $F^*$ is isomorphic to a generated subframe of the ultraproduct $F = \prod \limits_{J} F_j / U$ and we identify $F^*$ with this generated subframe. But the ultraproduct $F$ is a cylindric $\omega$-frame since each $F_j \in {\bf CFrames}_{\omega}$, but  ${\bf CFrames}_{\omega}$ is elementary and then closed under ultraproducts. But $F^*$ can be defined as
+\begin{center}
+$F^* = \coprod \limits_{x \in F^*} F^x$
+\end{center}
+But each $F^x$ is isomorphic to each $I^{\varphi(x)}$.
+\item Let $F^* = \prod \limits_{J} F^*_j / U$ be an ultraproduct of sub-Cartesian structures of dimension $\omega$, then each $F^*_j$ is a substructure of some full Cartesian structure $F_j$ of dimension $\omega$. So $F^*$ is isomorphic to a substructure of the ultraproduct $F = \prod \limits_{J} F_j / U$. As in the previous item, $F \in {\bf CFrames}_{\omega}$ of its all point-generated substructures $F^x$, each of which is isomorphic to some sub-Cartesian structure of dimension $\omega$. Then
+\begin{center}
+$F = \coprod \limits_{x \in F} F^{x} \in {\bf Ud}\mathcal{S}\mathfrak{ct}_{\omega} = \mathcal{S}\mathfrak{ct}_{\omega}$
+\end{center}
+That makes $F^* \in \mathcal{S}\mathfrak{ct}_{\omega}$.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem} \label{cmfact}
+$\mathcal{W}\mathfrak{ct}_{\omega}^{+} \subseteq {\bf S} (({\bf Pw}(\mathcal{W}\mathfrak{ct}_{\omega}))^{+})$.
+\end{theorem}
+
+\begin{proof}
+Let $J$ be the set of finite subsets $\omega$ and let $U$ be an ultrafilter on $J$ that contains, for each $i \in J$, the set
+\begin{center}
+$J_i = \{ j \in J \: | \: i \subseteq j \}$.
+\end{center}
+In particular $J_k = \{ j \in J \: | \: k \in j \}$ for all $k < \omega$. Now take $\mathfrak{S}_{\omega}(X^{(x)}) \in \mathcal{W}\mathfrak{ct}_{\omega}$. For each $y \in {X^{\omega}}^{(x)}$, let $f_y \in ({X^{\omega}}^{(x)})^{J}$ be the constant function $f_y(j) = y$. Then $\psi : y \mapsto f_y / U$ is the isomorphic embedding
+\begin{center}
+$\psi : \mathfrak{S}_{\omega}(X^{(x)}) \hookrightarrow \mathfrak{S}_{\omega}(X^{(x)})^J/U$
+\end{center}
+of $\mathfrak{S}_{\omega}(X^{(x)})$ to its ultrapower $\mathfrak{S}_{\omega}(X^{(x)})^J/U$ with respect to $U$. We have got to show:
+\begin{claim} \label{claim}
+There exists a bounded morphism $\varphi : \mathfrak{S}_{\omega}(X)^J/U \to \mathfrak{S}_{\omega}(X^{(x)})/U$ such that its image contains the image of $\psi$:
+\begin{center}
+$\psi : \mathfrak{S}_{\omega} \hookrightarrow \operatorname{Im}\psi \subseteq \operatorname{Im}\phi \subseteq \mathfrak{S}_{\omega}(X^{(x)})^J / U $
+\end{center}
+\end{claim}
+
+By duality $\phi$ induces a homomorphism:
+\begin{center}
+$\phi^+ : (\mathfrak{S}_{\omega}(X^{(x)})/U)^+ \to (\mathfrak{S}_{\omega}(X)^J/U)^+$
+\end{center}
+$\phi^+$ composes with the homomorphism:
+\begin{center}
+$(\mathfrak{S}_{\omega}(X^{(x)}))^+ \to (\mathfrak{S}_{\omega}(X^{(x)})^J/U)^+$
+\end{center}
+that gives a homomorphism:
+\begin{center}
+$\theta : (\mathfrak{S}_{\omega}(X^{(x)}))^+ \to (\mathfrak{S}_{\omega}(X)^J/U)^+$
+\end{center}
+Let us describe the action of $\theta$, take $f \in (X^{\omega})^J$ and choose any $f^+ \in f \in ({X^{\omega}}^{(x)})^J$ such that $\varphi(f/U) = f^+/U$, so for any $Y \subseteq {X^{\omega}}^{(x)}$:
+\begin{center}
+$\theta(Y) = \{ f/U \in (X^{\omega})^J/U \: | \: \{ j \: | \: f^+(j) \in Y \} \in U \}$.
+\end{center}
+
+So for $y \in Y$, then $\psi(y)$ (that is $f_y/U$) is equal to $\varphi(f/U)$ for some $f$, so then $f^+/U = f_y/U$ and then $\{ j \: | \: f^{+}(j) = y \in Y \} \in U$ showing that $f/U \in \theta(Y)$. As far as $\mathfrak{S}_{\omega}(X)^J/U$ is an ultrapower of a full Cartesian structure of dimension $\omega$, so $(\mathfrak{S}_{\omega}(X^{(x)}))^+ \in {\bf S} (({\bf Pw}(\mathcal{F}\mathfrak{ct}_{\omega}))^+)$, so the theorem is proved.
+
+Now let us prove Claim~\ref{claim}:
+\begin{proof}
+Take $f \in (X^{\omega})^J$, define $f^{+} \in ({X^{\omega}}^{(x)})^J$ as:
+\begin{equation}
+    f^{+}(j)_k = \begin{cases}
+        f(j)_k \:\: \text{if $k \in j$} \\
+        x_k \:\: \text{otherwise}
+    \end{cases}
+\end{equation}
+Each $f^+(j)$ differs from $x$ at most on the finite set $j$. Clearly that $f(j) = g(j)$ implies $f^+(j) = g^+(j)$, so $f_U = g_U$ in $(X^{\omega})^J/U$ implies $f^+_U = g^+_U$ in $({X^{\omega}}^{(x)})^J/U$. So the mapping $\varphi : f_U \mapsto f^+_U$ is well-defined.
+
+Let us show that $\operatorname{Im}\psi \subseteq \operatorname{Im}\varphi$. Take ${f_y}_U \in \operatorname{Im}\psi$ with $y \in {X^{\omega}}^{(x)}$. We also have ${f_y}_U \in (X^{\omega})^J$, so that is enough to show that ${f^+_y}_U = {f_y}_U$ in $\operatorname{Im}\psi$. Put $i = \{ k < \omega \: | \: x_k \neq y_k \} \in J$, so for $j \in J_j$:
+\begin{equation}
+    {f^+_y(j)}_k = \begin{cases}
+        {f_y(j)}_k \:\:\:\:\:\:\:\:\:\:\:\: \text{if $k \in j$} \\
+        x_k = {f_y(j)}_k \:\: \text{otherwise}
+    \end{cases}
+\end{equation}
+since $f_y(j)$ agrees with $x$ outside $i$. Thus $f^{+}_y(j) = f_y(j)$ for each $j \in J_j \in U$, so ${f^{+}_y}_U = {f_y}_U = \psi(y)$.
+\end{proof}
+
+We skip the proof $\varphi$ is a bounded morphism. 
+\end{proof}
+
+\begin{theorem}
+$\mathcal{W}\mathfrak{ct}_{\omega}^+ \subseteq {\bf RCA}_{\omega}$.
+\end{theorem}
+
+\begin{proof}
+$ $
+
+$\begin{array}{lll}
+\mathcal{W}\mathfrak{ct}_{\omega}^+ \subseteq & \\
+\:\:\:\: \text{By Theorem~\ref{cmfact}} & \\
+\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\: \subseteq {\bf S Cm Pw}(\mathcal{F}\mathfrak{ct}_{\omega}) & \\
+\:\:\:\: \text{By Theorem~\ref{puub}} & \\
+\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\: \subseteq {\bf S Cm Ub}(\mathcal{F}\mathfrak{ct}_{\omega}) & \\
+\:\:\:\: \text{Since ${\bf Ub} \leq \mathbb{H}{\bf Ud}$} & \\
+\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\: \subseteq {\bf S Cm} \mathbb{H}{\bf Ud}\mathcal{F}\mathfrak{ct}_{\omega} & \\
+\:\:\:\: \text{Since $\mathbb{H}{\bf Ud} = {\bf Ud}$} & \\
+\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\: = {\bf S Cm} {\bf Ud}\mathcal{F}\mathfrak{ct}_{\omega} & \\
+\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\: = {\bf RCA}_{\omega}& \\
+\end{array}$
+\end{proof}
+
+\begin{theorem}
+${\bf IWs}_{\omega} \subseteq {\bf ICs}_{\omega}$.
+\end{theorem}
+
+\begin{proof}
+    
+\end{proof}
+
+\subsection{The proof of canonicity}
+
+Here we use the following fact related to canonical varieties generated by some class of complex algebras. Let ${\bf K}$ be an elementary class of relational structures, then:
+\begin{center}
+If $\mathcal{K}$ is closed under $p$-morphic images, generated subframes, and disjoint unions, then ${\bf S} (\mathcal{K}^+)$ is a canonical variety.
+\end{center}
+One may think of this fact as a more abstract version of Fine's theorem which claims that every elementary modal logic is canonical \cite{fine1975some}. This version denotes the same fact, but it is formulated in terms of varieties BAOs generated by complex algebras of some atom structures. We provide a more precise formulation of the fact above.
+
+
+\begin{prop}
+Let $\mathcal{K}$ be a class of frames, then ${\bf Pu}\mathcal{K} \subseteq \mathbb{H}\mathbb{S}{\bf Ud} \mathcal{K}$ implies that ${\bf S}((\mathbb{S}{\bf Ud} \mathcal{K})^+)$ is a canonical variety.
+\end{prop}
+
+This is a special case of \cite[Theorem 4.4]{goldblatt1995elementary} for dimension $\omega$.
+
+\begin{theorem}
+${\bf RCA}_{\omega}$ is a canonical variety.
+\end{theorem}
+
+\begin{proof}
+We have ${\bf RCA}_{\omega} = {\bf S}((\mathbb{S} {\bf Ud} \mathcal{F}\mathfrak{ct}_{\omega})^+)$.
+That's enough to show that ${\bf Pu} \mathcal{F}\mathfrak{ct}_{\omega} \subseteq \mathbb{HS} {\bf Ud} \mathcal{F}\mathfrak{ct}_{\omega}$.
+For that, we need the following claim:
+
+\end{proof}
+
+\section{Representability via games}
+
+\subsection{Monk's theorem for ${\bf RCA}_n$ via saturation}
+
+In this section we consider classes ${\bf RCA}_n$ for $n < \omega$.
+
+We provide the complete proof of the following theorem \cite[Theorem 3.4.3]{hirsch2013completions}.
+\begin{theorem}\label{finitecanon}
+Let $\mathcal{A} \in {\bf CA}_n$, then $\mathcal{A}$ is representable iff $(\mathcal{A}_+)^{+}$ is completely representable.
+\end{theorem}
+
+For that we need such model-theoretic notions as saturation and types, see \cite[Section 6.3]{hodges1993model}.
+
+\begin{definition} Let $\mathcal{M}$ be a first-order structure of a signature $L$ and $S \subseteq \mathcal{M}$. Let $L(S)$ be an extension of $L$ with copies of elements from $S$ as additional constants. We assume that $Cnst(L)$ and $S$ are disjoint.
+
+\begin{enumerate}
+\item Let $n < \omega$, an $n$-type over $S$ is a set $\mathcal{T}$ of $L(S)$ formulas $A(\overline{x})$, where $\overline{x}$ is a fixed $n$-tuple of elements from $S$. Notation: $\mathcal{T}(\overline{x})$. A type is an $n$-type for some $n < \omega$.
+\item An $n$-type $\mathcal{T}(\overline{x})$ is realised in $\mathcal{M}$, if there exists $\overline{m} \in \mathcal{M}^n$ such that $\mathcal{M} \models A(\overline{m})$ for every $A \in \mathcal{T}(\overline{x})$. $\mathcal{M}$ omits $\mathcal{T}(\overline{x})$, if $\mathcal{T}(\overline{x})$ is not realised in $\mathcal{M}$.
+\item $\mathcal{T}(\overline{x})$ is finitely satisfied in $\mathcal{M}$, if every finite subtype $\mathcal{T}_0(\overline{x}) \subseteq \mathcal{T}(\overline{x})$ is realised in $\mathcal{M}$. We can reformulate that as $\mathcal{M} \models \exists \overline{a} \bigwedge \limits_{A \in \mathcal{T}_0} A(\overline{a})$.
+\item Let $T$ be a theory, then a type $\mathcal{T}$ over the empty set of constants is $T$-consistent, if there exists a model $\mathcal{M} \models T$ such that $\mathcal{T}$ is finitely satisfied in $\mathcal{M}$.
+\item Let $\kappa$ be a cardinal, then $\mathcal{M}$ is $\kappa$-saturated, if for every $S \subseteq \mathcal{M}$ with $|S| < \kappa$ every finitely satisfied $1$-type $\mathcal{T}$ is realised in $\mathcal{M}$.
+\end{enumerate}
+\end{definition}
+
+By default, a saturated model is an $\omega$-saturated model for us.
+
+A couple of useful facts from \cite{chang1990model} and \cite{hodges1993model}:
+
+\begin{fact} Let $\mathcal{M}$ be an FO-structue and $\kappa$ a cardinal, then:
+\begin{enumerate}
+\item $\mathcal{M}$ is $\kappa$-saturated, iff every finitely satisfiable $\alpha$-type (an arbitrary $\alpha \leq \kappa$) with fewer than $\kappa$ parameters is realised in  $\mathcal{M}$.
+\item If $\mathcal{M}$ is $\kappa$-saturated, then $\mathcal{M}$ is $\lambda$-saturated for every $\lambda < \kappa$.
+\item \label{saturation} Every consistent theory has a $\kappa$-saturated model and every model has an elementary $\kappa$-saturated extension.
+\item Let $(\mathcal{M}_i)_{i < \omega}$ a family of structures of the (at most) countable signature and $D$ a non-principal ultrafilter over $\omega$, then $\Pi_D \mathcal{M}_i$ is $\omega_1$-saturated.
+\end{enumerate}
+\end{fact}
+
+\subsection{Proof of Theorem~\ref{finitecanon}}
+
+Let $\mathcal{A} \in {\bf CA}_n$, then if $\mathcal{A}$ is completely representable, then $h$, a complete representation of $\mathcal{A}$, is atomic. That is, $(a_1, \dots, a_n) \in h(1)$, then $(a_1, \dots, a_n) \in h(y)$ for some $y \in \operatorname{At}(\mathcal{A})$.
+
+\begin{definition} \label{theory} Let $\mathcal{A}$ be a cylindric algebra of dimension $n < \omega$.
+$L(\mathcal{A})$ is the first-order language that consists of equality plus $n$-ary predicate letters $(R^n_a)_{a \in \mathcal{A}}$. The $L(\mathcal{A})$-theory $T_{\mathcal{A}}$ consists of the following sentences:
+\begin{enumerate}
+\item $A_+(a,b,c) := \forall x_1, \dots, x_n \: (R_a(x_1, \dots, x_n) \leftrightarrow R_b(x_1, \dots, x_n) \lor R_c(x_1, \dots, x_n))$. Informally, that means $\mathcal{A} \models a = b + c$.
+\item $A_{-}(a,b) := \forall x_1, \dots, x_n \: (R_a(x_1, \dots, x_n) \leftrightarrow \neg R_b(x_1, \dots, x_n))$. That is, $\mathcal{A} \models a = - b$.
+\item $A_{\neq 0}(a) := \exists x_1, \dots, x_n R_a(x_1, \dots, x_n)$. That is, $\mathcal{A} \models a \neq 0$.
+\item $A_{c_i}(a) := \forall x_1, \dots, x_n (R_{c_i a}(x_1, \dots, x_n) \leftrightarrow \exists y_1, \dots y_n (R_a(y_1, \dots, y_n) \land x_i = y_j))$, for $i < n$ and $j < n$ such that $i \neq j$. Informally, $\mathcal{A} \models {c_i} a = 1$.
+\item $A_{d_{ij}} := \forall x_1, \dots, x_n (R_{d_{ij}}(x_1, \dots, x_n) \leftrightarrow x_i = x_j)$, for $i, j < n$.
+\end{enumerate}
+\end{definition}
+
+In fact, we need to show the following implication:
+\begin{center}
+If $\mathcal{A}$ is representable, then $A^{+}$ is completely representable.
+\end{center}
+
+Assume that $\mathcal{A}$ is representable, then the theory $T(\mathcal{A})$ is consistent, then it has an $\omega$-saturated model $\mathcal{M}$ by Fact~\ref{saturation}. We have the following claim:
+\begin{claim}
+The set $U_{x_1,\dots,x_n} = \{ a \in \mathcal{A} \: | \: \mathcal{M} \models R_a(x_1,\dots,x_n)\}$ is an ultrafilter of $\mathcal{A}$, for $x_1,\dots,x_n \in \mathcal{M}$ with $R_{1}(x_1,\dots,x_n)$.
+\end{claim}
+Those $U_{x_1,\dots,x_n}$'s allow us to represent atoms of $\mathcal{A}^{+}$.
+
+We define a representation of $\mathcal{A}^{+}$ as a map $h : \mathcal{A}^{+} \to 2^{\mathcal{M}^n}$ such that:
+\begin{center}
+$h : S \mapsto \{ (x_1, \dots, x_n) \in 1^{\mathcal{M}} \: | \: U_{x_1,\dots,x_n} \in S \}$, for $S \in {\bf Spec}(\mathcal{A})$.
+\end{center}
+
+\begin{claim} Let $A_1, A_2 \in {\bf Spec}(\mathcal{A})$
+\begin{enumerate}
+\item $h(0^{\mathcal{A}^{+}}) = \emptyset$
+\item $h(- A_1) = - h(A_1)$
+\item $h(1^{\mathcal{A}^{+}}) = 1^{\mathcal{M}}$
+\item If $S \subseteq {\bf Spec}(\mathcal{A})$, then $h(\bigcup S) = \bigcup \limits_{U \in S} h(U)$
+\end{enumerate}
+In particular, $h$ is a Boolean homomorphism.
+\end{claim}
+
+\begin{proof}
+$ $
+
+\begin{enumerate}
+\item $h(0^{\mathcal{A}^{+}}) = h(\emptyset) = \emptyset$.
+\item From the definiton of $h$.
+\item $h(- A_1) = - h(A_1)$
+
+Let $x_1, \dots, x_n \in 1^{\mathcal{M}}$, then we have:
+
+\begin{center}
+$(x_1, \dots, x_n) \in h(- A_1)$ iff $U_{x_1, \dots, x_n} \in - A_1$ iff $U_{x_1, \dots, x_n} \notin A_1$ iff $(x_1, \dots, x_n) \notin h(A_1)$
+\end{center}
+\item Let $S = \bigcup \limits_{i \in I} S_i$, where $S_i \in {\bf Spec}(\mathcal{A})$ for every $i \in I$.
+Let $(x_1, \dots, x_n) \in 1^{\mathcal{M}}$, then we have:
+\begin{center}
+$(x_1, \dots, x_n) \in h(\bigcup \limits_{i \in I} S_i)$ iff $f_{x_1, \dots, x_n} \in \bigcup \limits_{i \in I} S_i$ iff $\exists i \in I \:\: f_{x_1, \dots, x_n} \in S_i$ iff $\exists i \in I \:\: (x_1, \dots, x_n) \in h(S_i)$ iff $(x_1, \dots, x_n) \in \bigcup \limits_{i \in I} S_i$
+\end{center}
+\end{enumerate}
+\end{proof}
+
+\begin{claim}
+$h$ is injective.
+\end{claim}
+
+\begin{proof}
+Let $U \in {\bf Spec}(\mathcal{A})$. The first is to show that $h(U)$ is non-empty. The following $n$-type:
+\begin{center}
+$T(x_1, \dots, x_n) = \{ R_a(x_1, \dots, x_n) \: | \: a \in U \}$
+\end{center}
+if finitely satisfied in $\mathcal{M}$.
+
+Consider $T_0 = \{ R_{a_1}(x_1, \dots, x_n), \dots, R_{a_k}(x_1, \dots, x_n) \} \subseteq T$. Then $a_1, \dots, a_k \in U$ and $a = a_1 \cdot \dots \cdot a_k \in U$. By the instance of the $A_{\neq 0}(a)$-axiom, we have $\mathcal{M} \models \exists x_1, \dots, x_n R_a(x_1, \dots, x_n)$.
+$a \leq a_i$ for $i \leq k$, so we have $\mathcal{M} \models \exists x_1, \dots, x_n R_{a_i}(x_1, \dots, x_n)$ for every $a_i$ with $i \leq k$ by the instance of the $A_{+}(a_i, a, a)$-axiom. That makes every finite subtype of $T$ satisfiable, thus the whole type is finitely satisfiable in $\mathcal{M}$.
+$\mathcal{M}$ is $\omega$-saturated, then $T$ is realised in $\mathcal{M}$ by some $(x_1, \dots, x_n) \in \mathcal{M}^n$ and, moreover, $\mathcal{M} \models 1(x_1, \dots, x_n)$. As we have already said, $U_{x_1, \dots, x_n}$ is an ultrafilter, but $U_{x_1, \dots, x_n} \subseteq U$, thus $U = U_{x_1, \dots, x_n}$, so $(x_1, \dots, x_n) \in h(U)$.
+
+That makes $h$ one-to-one.
+\end{proof}
+
+\begin{claim}
+$ $
+
+\begin{enumerate}
+\item $h(c_i{^{\mathcal{A}^{+}}} U) = C_i (h(U))$
+\item $h(d_{ij}^{\mathcal{A}^{+}}) = D_{ij} \subseteq {\bf Spec}(\mathcal{A})$
+\end{enumerate}
+\end{claim}
+
+\begin{proof}
+$ $
+
+\begin{enumerate}
+\item Assume $(x_1, \dots, x_n) \in h(c_i{^{\mathcal{A}^{+}}} S)$.
+
+Let us show that $\overline{x} \in C_i (h(S))$, that is, there exists $\overline{y} = (y_1, \dots, y_n) \in h(S)$ such that $\overline{x} \equiv_{i} \overline{y}$.
+
+Then $\mathcal{M} \models 1(x_1, \dots, x_n)$ and $U_{x_1, \dots x_n} \in c_i{^{\mathcal{A}^{+}}} S$. But $\mathcal{A}^{+}$ is the complex algebra of the ultrafilter frame $\mathcal{F}_{\mathcal{A}}$.
+Then we have:
+\begin{center}
+$c_i{^{\mathcal{A}^{+}}} S = \{ U_1 \in {\bf Spec}(\mathcal{A}) \: | \: \exists U' \in S  \: U_1 R_{i} U' \}$
+\end{center}
+Then there must be an ultrafilter $U' \in S$ such that $U_{x_1, \dots x_n} R_{i} U'$, that is, $c_i a \in U_{x_1, \dots x_n}$ whenever $a \in U'$.
+Hence $\mathcal{M} \models R_{c_i}(x_1, \dots x_n)$. By the $A_{c_i}(a)$-axiom, we have
+\begin{center}
+$\mathcal{M} \models \exists z_1, \dots, z_n (R_a(z_1, \dots, z_n) \land x_i = z_j)$ for $i < n$ and $j < n$ such that $i \neq j$.
+\end{center}
+Consider the following $n$-type with free variables $z_1, \dots, z_n$ and parameters $x_1, \dots, x_n \in \mathcal{M}$:
+\begin{center}
+$T(z_1, \dots, z_n) = \{ R_a(z_1, \dots, z_n) \land x_i = z_j \: | \: i < n, j < n, i \neq j, a \in U' \}$.
+\end{center}
+Let us show that $T(z_1, \dots, z_n)$ is finitely satifsiable in $\mathcal{M}$.
+Consider a finite subset of $T$, say $T_0 = \{ R_{b_k}(z_1, \dots, z_n) \land x_i = y_j \: | \: i < n, j < n, i \neq j, b_k \in U', k < \omega \}$.
+We put $p = p_1 \cdot \dots \cdot p_k$ and $p \in U'$ since $U'$ is a filter. Then we have:
+\begin{center}
+$\mathcal{M} \models \exists z_1, \dots, z_n (R_b(z_1, \dots, z_n) \land x_i = z_j)$ for $i < n$ and $j < n$ such that $i \neq j$
+\end{center}
+Thus, we have, as required:
+\begin{center}
+$\mathcal{M} \models \exists z_1, \dots, z_n \bigwedge \limits_{i = 1}^{k} (R_{b_k}(z_1, \dots, z_n) \land x_i = z_j)$ for $i < n$ and $j < n$ such that $i \neq j$.
+\end{center}
+As above, using $\omega$-saturation, we conclude that $T$ is realised in $\mathcal{M}$ at an $n$-tuple $(y_1, \dots, y_n) = \overline{y}$.
+Then we have:
+\begin{center}
+$\mathcal{M} \models 1(\overline{y})$, $\overline{x} \equiv_i \overline{y}$, $U_{\overline{y}} \supseteq U'$
+\end{center}
+Then $U_{\overline{y}} = U'$, then $\overline{y} \in h(S)$. Then $\overline{x} \in C_i (h (S))$.
+
+Suppose for the converse, $\overline{x} = (x_1, \dots, x_n) \in C_i (h(S))$. We need $\overline{x} \in h(c_i(S))$.
+Then there exists $\overline{y} = (y_1, \dots, y_n)$ such that $\overline{x} \equiv_i \overline{y}$ and $\overline{y} \in h(S)$. Then there exists an ultrafilter $U_{y_1, \dots, y_n} \in S$. Let us show that $\mathcal{M} \models 1(x_1, \dots, x_n)$ and $U_{x_1, \dots, x_n} \in c_i U_{y_1, \dots, y_n}$.
+Let $a \in U_{y_1, \dots, y_n}$. Then we have $\mathcal{M} \models R_a(y_1, \models, y_n)$. By the $A_{c_i}(a)$ axiom, we have $\mathcal{M} \models R_{c_i a}(x_1, \dots, x_n)$. Then $\mathcal{M} \models 1(x_1, \dots, x_n)$ and $c_i a \in U_{x_1, \dots, x_n}$, thus, $\overline{x} \in h(c_i(S))$.
+\item Let us show that $h$ preserves cylindrifications.
+
+Let $(x_1, \dots, x_n) \in \mathcal{M}^n$. Then $(x_1, \dots, x_n) \in D_{ij}$ iff $\mathcal{M} \models 1(x_1, \dots, x_n)$ and $x_i = x_j$ iff $U_{x_1, \dots, x_n} \in d_{ij}^{\mathcal{A}^{+}} = \{ U \in {\bf Spec}(\mathcal{A}) \: | \: d_ij \in U \}$ iff $\mathcal{M} \models d_{ij}^{\mathcal{M}}(x_1, \dots, x_n)$.
+\end{enumerate}
+\end{proof}
+
+\subsection{Finite dimensions}
+
+\begin{definition}
+
+Network
+\end{definition}
+
+\begin{theorem}
+
+Completely representable iff $\exists$ has a ws.
+\end{theorem}
+
+\begin{definition}
+Ultrafilter network
+\end{definition}
+
+\begin{theorem}
+${\bf RCA}_n$ is a pseudoelementary class for $3 \leq n < \omega$.
+\end{theorem}
+
+\begin{theorem}
+
+$\exists$ has a ws for the canonical extension.
+
+\end{theorem}
+
+\subsection{Dimension $\omega$}
+
+\begin{question}
+Can we characterise ${\bf RCA}_{\omega}$ as an enumerably axiomatisable pseudo-elementary class in three-sorted logic with sorts ${\bf b}$ (Boolean part), ${\bf c}$ (cylindric part) and ${\bf r}$ (representation part)?
+\end{question}
+
+
+\begin{definition}
+Network
+\end{definition}
+
+\begin{theorem}
+
+Completely representable iff $\exists$ has a ws.
+\end{theorem}
+
+\begin{definition}
+Ultrafilter network
+\end{definition}
+
+\begin{theorem}
+
+$\exists$ has a ws for the canonical extension.
+
+\end{theorem}
+
+\subsection{Counterexamples}
+
+\bibliographystyle{alpha}
+\bibliography{Text}
+
+\end{document}
