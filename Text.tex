@@ -6,6 +6,7 @@
 \usepackage{amsopn}
 \usepackage{comment}
 \usepackage{amssymb}
+\usepackage{hyperref}
 
 \theoremstyle{defin}
 \newtheorem{definition}{Definition}
@@ -180,6 +181,7 @@ Let $\mathcal{A}$ be a class of algebras and $\mathcal{F}$ a class of frames, th
 \item ${\bf Ud} \mathcal{F}$ is the closure of $\mathcal{F}$ under disjoint unions,
 \item ${\bf Ub} \mathcal{F}$ is the closure of $\mathcal{F}$ under bounded unions,
 \item $\mathcal{F}^+$ is the class of all complex algebras generated from elements of $\mathcal{F}$,
+\item $\mathcal{A}_+$ is the class of all ultrafilter frames generated from elements of $\mathcal{A}$,
 \item ${\bf Pu} \mathcal{K}$ is the closure of $\mathcal{K}$ under ultraproducts,
 \item ${\bf Pw} \mathcal{K}$ is the closure of $\mathcal{K}$ under ultrapowers,
 \item ${\bf S} \mathcal{A}$ is the closure of $\mathcal{A}$ under subalgebras,
@@ -341,7 +343,7 @@ If $C$ is a cylindric algebra, then $C_+$ is a cylindric $\omega$-frame.
 
 \emph{The canonical extension} of $C$ is the algebra ${(C_+)}^+$, that is, the complex algebra of the ultrafilter frame.
 
-\begin{theorem} (See \cite{jonsson1951boolean})
+\begin{theorem} (See~\cite{jonsson1951boolean})
 
 $C \in {\bf CA}_{\omega}$ embeds to ${(C_+)}^+$ by mapping 
 $a \mapsto \{ U \in {\bf Spec}(C) \: | \: a \in U \}$.
@@ -416,7 +418,7 @@ Complex algebras based on $\mathfrak{S}_{\omega}(X^x)$ form the class ${\bf Ws}_
 
 The following is by Goldblatt, see~\cite[Lemma 3.4]{goldblatt1995elementary}:
 \begin{lemma}
-${\bf RCA}_{\omega} = {\bf S} \: ({(\mathbb{S} {\bf Ud} \mathcal{F}\mathfrak{ct}_{\omega})}^{+}) = {\bf S} \: ((\mathbb{S} {\bf Ud} (\mathcal{W}\mathfrak{ct}_{\omega}))^{+}) = {\bf IGws}_{\omega}$
+${\bf RCA}_{\omega} = {\bf S} \: ({(\mathbb{S} {\bf Ud} \mathcal{F}\mathfrak{ct}_{\omega})}^{+}) = {\bf S} \: ({(\mathbb{S} {\bf Ud} (\mathcal{W}\mathfrak{ct}_{\omega}))}^{+}) = {\bf IGws}_{\omega}$
 \end{lemma}
 
 \subsection{Ultraproducts of full Cartesian structures}
@@ -483,7 +485,8 @@ since ${h(j)}_l = {f(j)}_l$ for $l \neq k$, so $(f_U) R_k (h_U)$ in the ultrapro
 
 \vspace{\baselineskip}
 
-Let us show that $\varphi$ acts isomorphically on every generated subframe $F^{x}$ of the ultraproduct. Take $f_U, g_U \in F^{x}$, then there are $i_0, \dots, i_n < \omega$ such that
+Let us show that $\varphi$ acts isomorphically on every generated subframe $F^{x}$ of the ultraproduct.
+Take $f_U, g_U \in F^{x}$, then there are $i_0, \dots, i_n < \omega$ such that
 \begin{center}
 $f_U(R_{i_0} \circ \dots \circ R_{i_n})g_U$.
 \end{center}
@@ -503,7 +506,7 @@ $J_k \cap J_{i_0} \cap \dots \cap J_{i_n} \in F$
 and thus $f_U = g_U$, so $\varphi$ is injective on $F^{x}$.
 \end{proof}
 
-\begin{theorem} \label{puub}
+\begin{theorem}~\label{puub}
 ${\bf Pu}\mathcal{F}\mathfrak{ct}_{\omega} \subseteq {\bf Ub}\mathcal{F}\mathfrak{ct}_{\omega}$.
 \end{theorem}
 
@@ -572,7 +575,7 @@ That makes $F^* \in \mathcal{S}\mathfrak{ct}_{\omega}$.
 \end{enumerate}
 \end{proof}
 
-\begin{theorem}~\label{cmfact}
+\begin{theorem}~\label{ultrapowers}
 $\mathcal{W}\mathfrak{ct}_{\omega}^{+} \subseteq {\bf S} ({({\bf Pw}(\mathcal{W}\mathfrak{ct}_{\omega}))}^{+})$.
 \end{theorem}
 
@@ -584,13 +587,13 @@ $J_i = \{ j \in J \: | \: i \subseteq j \}$.
 \end{center}
 In particular $J_k = \{ j \in J \: | \: k \in j \}$ for all $k < \omega$. 
 Now take $\mathfrak{S}_{\omega}(X^{(x)}) \in \mathcal{W}\mathfrak{ct}_{\omega}$.
-For each $y \in {X^{\omega}}^{(x)}$, let $f_y \in ({X^{\omega}}^{(x)})^{J}$ be the constant 
+For each $y \in {X^{\omega}}^{(x)}$, let $f_y \in {({X^{\omega}}^{(x)})}^{J}$ be the constant 
 function $f_y(j) = y$. Then $\psi : y \mapsto f_y / U$ is the isomorphic embedding
 \begin{center}
 $\psi : \mathfrak{S}_{\omega}(X^{(x)}) \hookrightarrow \mathfrak{S}_{\omega}{(X^{(x)})}^J/U$
 \end{center}
-of $\mathfrak{S}_{\omega}(X^{(x)})$ to its ultrapower $\mathfrak{S}_{\omega}(X^{(x)})^J/U$ with respect to $U$. We have got to show:
-\begin{claim} \label{claim}
+of $\mathfrak{S}_{\omega}(X^{(x)})$ to its ultrapower $\mathfrak{S}_{\omega}{(X^{(x)})}^J/U$ with respect to $U$. We have got to show:
+\begin{claim}~\label{claim}
 There exists a bounded morphism $\varphi : \mathfrak{S}_{\omega}{(X)}^J/U \to \mathfrak{S}_{\omega}(X^{(x)})/U$ 
 such that its image contains the image of $\psi$:
 \begin{center}
@@ -625,9 +628,9 @@ $\omega$, so ${(\mathfrak{S}_{\omega}(X^{(x)}))}^+ \in {\bf S} ({({\bf Pw}(\math
 
 Now let us prove Claim~\ref{claim}:
 \begin{proof}
-Take $f \in (X^{\omega})^J$, define $f^{\bullet} \in {({X^{\omega}}^{(x)})}^J$ as:
+Take $f \in {(X^{\omega})}^J$, define $f^{\bullet} \in {({X^{\omega}}^{(x)})}^J$ as:
 \begin{equation}
-    f^{\bullet}(j)_k = \begin{cases}
+    {f^{\bullet}(j)}_k = \begin{cases}
         {f(j)}_k \:\: \text{if $k \in j$} \\
         x_k \:\: \text{otherwise}
     \end{cases}
@@ -663,13 +666,13 @@ $ $
 
 $\begin{array}{lll}
 \mathcal{W}\mathfrak{ct}_{\omega}^+ \subseteq & \\
-\:\:\:\: \text{By Theorem~\ref{cmfact}} & \\
+\:\:\:\: \text{By Theorem~\ref{ultrapowers}} & \\
 \:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\: \subseteq {\bf S Cm Pw}(\mathcal{F}\mathfrak{ct}_{\omega}) & \\
 \:\:\:\: \text{By Theorem~\ref{puub}} & \\
 \:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\: \subseteq {\bf S Cm Ub}(\mathcal{F}\mathfrak{ct}_{\omega}) & \\
-\:\:\:\: \text{Since ${\bf Ub} \leq \mathbb{H}{\bf Ud}$} & \\
+\:\:\:\: \text{Since ${\bf Ub} \mathcal{F}\mathfrak{ct}_{\omega} \subseteq \mathbb{H}{\bf Ud} \mathcal{F}\mathfrak{ct}_{\omega} $} & \\
 \:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\: \subseteq {\bf S Cm} \mathbb{H}{\bf Ud}\mathcal{F}\mathfrak{ct}_{\omega} & \\
-\:\:\:\: \text{Since $\mathbb{H}{\bf Ud} = {\bf Ud}$} & \\
+\:\:\:\: \text{Since $\mathbb{H}{\bf Ud} \mathcal{F}\mathfrak{ct}_{\omega} = {\bf Ud} \mathcal{F}\mathfrak{ct}_{\omega}$} & \\
 \:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\: = {\bf S Cm} {\bf Ud}\mathcal{F}\mathfrak{ct}_{\omega} & \\
 \:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\:\: = {\bf RCA}_{\omega}& \\
 \end{array}$
@@ -680,32 +683,66 @@ ${\bf IWs}_{\omega} \subseteq {\bf ICs}_{\omega}$.
 \end{theorem}
 
 \begin{proof}
-    
+  Let $F_1 = {\mathfrak{S}_{\omega}(X)}^J/U$ and $F_2 = {\mathfrak{S}_{\omega}(X^{(x)})}^J/U$ be as in the proof
+  of Theorem~\ref{ultrapowers}. Let $\varphi : F_1 \to F_2$ be a $p$-morphism as in the same proof.
+
+  We transform $\varphi$ to a $p$-morphism $\mathfrak{S}_{\omega}(X^J/U) \to F_2$, so we have embedding of 
+  ${{\mathfrak{S}_{\omega}(X^{(x)})}^J/U}^+$ into the cylindric set algebra ${\mathfrak{S}_{\omega}(X^J/U)}^+$.
+
+  As in Theorem~\ref{puub}, each point of $F_1$ belongs to a generated subframe of $F_1$, which is isomorphism
+  to $\mathfrak{S}_{\omega}(X^J/U)$. In particular, there is an injection:
+
+  \begin{center}
+    $\varphi_x : \mathfrak{S}_{\omega}(X^J/U) \hookrightarrow F_1$
+  \end{center}
+  whose image is a generated subframe of $F_1$ containing the point $f_x/U$. 
+  Composing $\varphi_x$ with $\varphi$ given a morphism:
+  \begin{center}
+    $\varphi \circ \varphi_x : \mathfrak{S}_{\omega}(X^J/U) \to F_2$
+  \end{center}
+  By duality, we have a homomorphism:
+  \begin{center}
+    $F_2^+ \to {(\mathfrak{S}_{\omega}(X^J/U))}^+$
+  \end{center}
+  which composes with the map ${(\mathfrak{S}_{\omega}(X^{(x)}))}^+ \to F_2^+$ that gives a homomorphism
+  \begin{equation} \label{injection}
+    {(\mathfrak{S}_{\omega}(X^{(x)}))}^+ \to {(\mathfrak{S}_{\omega}(X^J/U))}^+.
+  \end{equation}
+  The last homomorphism is injective whenever the image of 
+  $\varphi \circ \varphi_x$ contains the image of the embedding 
+  $\psi : \mathfrak{S}_{\omega}(X^{(x)}) \hookrightarrow {\mathfrak{S}_{\omega}(X^{(x)})}^J/U$.
+
+  Take $y \in {X^{\omega}}^{(x)}$, then $x (R_{i_0} \circ \cdots \circ R_{i_n}) y$ in 
+  $\mathfrak{S}_{\omega}(X)$ for some $i_0, \ldots, i_n < \omega$, so 
+  $f_x/U (R_{i_0} \circ \cdots \circ R_{i_n}) f_y/U$, so $f_y/U$ belongs to the 
+  generated subframe $\operatorname{Im} \varphi_x$ of $F_1$. 
+  Then $\operatorname{Im}(\varphi \circ \varphi_x)$ contains $\varphi(f_y / U) = f^{\bullet}_y / U$,
+  but $f^{\bullet}_y / U = \psi(y)$ in $F_2$.
+
+  Thus $\operatorname{Im}\psi \subseteq \operatorname{Im}(\varphi \circ \varphi_x)$, 
+  so (~\ref{injection}) is an injection. So we have
+  \begin{center}
+    ${(\mathcal{W}\mathfrak{ct}_{\omega})}^+ \subseteq {\bf S}({(\mathcal{F}\mathfrak{ct}_{\omega})}^+) = {\bf ICs}_{\omega}$
+  \end{center}
+  Then
+  \begin{center}
+    ${\bf IWs}_{\omega} = {\bf S} ({(\mathcal{W}\mathfrak{ct}_{\omega})}^+) \subseteq {\bf ICs}_{\omega}$.
+  \end{center}
 \end{proof}
 
-\subsection{The proof of canonicity}
+\subsection{Elementary generating and proof of canonicity}
 
-Here we use the following fact related to canonical varieties generated by some class of complex algebras. Let ${\bf K}$ be an elementary class of relational structures, then:
-\begin{center}
-If $\mathcal{K}$ is closed under $p$-morphic images, generated subframes, and disjoint unions, then ${\bf S} (\mathcal{K}^+)$ is a canonical variety.
-\end{center}
-One may think of this fact as a more abstract version of Fine's theorem which claims that every elementary modal logic is canonical \cite{fine1975some}. This version denotes the same fact, but it is formulated in terms of varieties BAOs generated by complex algebras of some atom structures. We provide a more precise formulation of the fact above.
+\begin{lemma} Let $\mathcal{A}$ be a class of BAOs and let $\mathcal{F}$ be a class of Kripke frames, then:
 
+  \begin{enumerate}
+    \item ${({\bf HS} \mathcal{A})}_+ \subseteq \mathbb{S} \mathbb{H} (\mathcal{A}_+)$,
+    \item ${({\bf HS} (\mathcal{F}^+))}_+ \subseteq \mathbb{S} \mathbb{H} {\bf Pw} \mathcal{A}$,
+    \item $({\bf HS} (\mathcal{F}^+)) \subseteq {\bf S} ({\mathbb{S} {\bf Pw} \mathcal{F}}^+)$.
+  \end{enumerate}
 
-\begin{prop}
-Let $\mathcal{K}$ be a class of frames, then ${\bf Pu}\mathcal{K} \subseteq \mathbb{H}\mathbb{S}{\bf Ud} \mathcal{K}$ implies that ${\bf S}((\mathbb{S}{\bf Ud} \mathcal{K})^+)$ is a canonical variety.
-\end{prop}
-
-This is a special case of~\cite[Theorem 4.4]{goldblatt1995elementary} for dimension $\omega$.
-
-\begin{theorem}
-${\bf RCA}_{\omega}$ is a canonical variety.
-\end{theorem}
+\end{lemma}
 
 \begin{proof}
-We have ${\bf RCA}_{\omega} = {\bf S}((\mathbb{S} {\bf Ud} \mathcal{F}\mathfrak{ct}_{\omega})^+)$.
-That's enough to show that ${\bf Pu} \mathcal{F}\mathfrak{ct}_{\omega} \subseteq \mathbb{HS} {\bf Ud} \mathcal{F}\mathfrak{ct}_{\omega}$.
-For that, we need the following claim:
 
 \end{proof}
 
@@ -715,7 +752,7 @@ For that, we need the following claim:
 
 In this section we consider classes ${\bf RCA}_n$ for $n < \omega$.
 
-We provide the complete proof of the following theorem \cite[Theorem 3.4.3]{hirsch2013completions}.
+We provide the complete proof of the following theorem~\cite[Theorem 3.4.3]{hirsch2013completions}.
 \begin{theorem}\label{finitecanon}
 Let $\mathcal{A} \in {\bf CA}_n$, then $\mathcal{A}$ is representable iff ${(\mathcal{A}_+)}^{+}$ is completely representable.
 \end{theorem}
@@ -761,14 +798,11 @@ $L(\mathcal{A})$ is the first-order language that consists of equality plus $n$-
 \end{enumerate}
 \end{definition}
 
-In fact, we need to show the following implication:
-\begin{center}
-If $\mathcal{A}$ is representable, then $A^{+}$ is completely representable.
-\end{center}
-
-Assume that $\mathcal{A}$ is representable, then the theory $T(\mathcal{A})$ is consistent, then it has an $\omega$-saturated model $\mathcal{M}$ by Fact~\ref{saturation}. We have the following claim:
+Assume that $\mathcal{A}$ is representable, then the theory $T(\mathcal{A})$ is satisfiable,
+then it has an $\omega$-saturated model $\mathcal{M}$ by Fact~\ref{saturation}. We have the following claim:
 \begin{claim}
-The set $U_{x_1,\dots,x_n} = \{ a \in \mathcal{A} \: | \: \mathcal{M} \models R_a(x_1,\dots,x_n)\}$ is an ultrafilter of $\mathcal{A}$, for $x_1,\dots,x_n \in \mathcal{M}$ with $R_{1}(x_1,\dots,x_n)$.
+The set $U_{x_1,\dots,x_n} = \{ a \in \mathcal{A} \: | \: \mathcal{M} \models R_a(x_1,\dots,x_n)\}$
+is an ultrafilter of $\mathcal{A}$, for $x_1,\dots,x_n \in \mathcal{M}$ with $R_{1}(x_1,\dots,x_n)$.
 \end{claim}
 Those $U_{x_1,\dots,x_n}$'s allow us to represent atoms of $\mathcal{A}^{+}$.
 
@@ -803,7 +837,9 @@ $(x_1, \dots, x_n) \in h(- A_1)$ iff $U_{x_1, \dots, x_n} \in - A_1$ iff $U_{x_1
 \item Let $S = \bigcup \limits_{i \in I} S_i$, where $S_i \in {\bf Spec}(\mathcal{A})$ for every $i \in I$.
 Let $(x_1, \dots, x_n) \in 1^{\mathcal{M}}$, then we have:
 \begin{center}
-$(x_1, \dots, x_n) \in h(\bigcup \limits_{i \in I} S_i)$ iff $f_{x_1, \dots, x_n} \in \bigcup \limits_{i \in I} S_i$ iff $\exists i \in I \:\: f_{x_1, \dots, x_n} \in S_i$ iff $\exists i \in I \:\: (x_1, \dots, x_n) \in h(S_i)$ iff $(x_1, \dots, x_n) \in \bigcup \limits_{i \in I} S_i$
+$(x_1, \dots, x_n) \in h(\bigcup \limits_{i \in I} S_i)$ iff $f_{x_1, \dots, x_n} \in \bigcup \limits_{i \in I} S_i$ 
+iff $\exists i \in I \:\: f_{x_1, \dots, x_n} \in S_i$ iff $\exists i \in I \:\: (x_1, \dots, x_n) \in h(S_i)$ 
+iff $(x_1, \dots, x_n) \in \bigcup \limits_{i \in I} S_i$
 \end{center}
 \end{enumerate}
 \end{proof}
@@ -819,9 +855,16 @@ $T(x_1, \dots, x_n) = \{ R_a(x_1, \dots, x_n) \: | \: a \in U \}$
 \end{center}
 if finitely satisfied in $\mathcal{M}$.
 
-Consider $T_0 = \{ R_{a_1}(x_1, \dots, x_n), \dots, R_{a_k}(x_1, \dots, x_n) \} \subseteq T$. Then $a_1, \dots, a_k \in U$ and $a = a_1 \cdot \dots \cdot a_k \in U$. By the instance of the $A_{\neq 0}(a)$-axiom, we have $\mathcal{M} \models \exists x_1, \dots, x_n R_a(x_1, \dots, x_n)$.
-$a \leq a_i$ for $i \leq k$, so we have $\mathcal{M} \models \exists x_1, \dots, x_n R_{a_i}(x_1, \dots, x_n)$ for every $a_i$ with $i \leq k$ by the instance of the $A_{+}(a_i, a, a)$-axiom. That makes every finite subtype of $T$ satisfiable, thus the whole type is finitely satisfiable in $\mathcal{M}$.
-$\mathcal{M}$ is $\omega$-saturated, then $T$ is realised in $\mathcal{M}$ by some $(x_1, \dots, x_n) \in \mathcal{M}^n$ and, moreover, $\mathcal{M} \models 1(x_1, \dots, x_n)$. As we have already said, $U_{x_1, \dots, x_n}$ is an ultrafilter, but $U_{x_1, \dots, x_n} \subseteq U$, thus $U = U_{x_1, \dots, x_n}$, so $(x_1, \dots, x_n) \in h(U)$.
+Consider $T_0 = \{ R_{a_1}(x_1, \dots, x_n), \ldots, R_{a_k}(x_1, \dots, x_n) \} \subseteq T$. 
+Then $a_1, \dots, a_k \in U$ and $a = a_1 \cdot \cdots \cdot a_k \in U$. 
+By the instance of the $A_{\neq 0}(a)$-axiom,
+ we have $\mathcal{M} \models \exists x_1, \dots, x_n R_a(x_1, \dots, x_n)$.
+$a \leq a_i$ for $i \leq k$, so we have $\mathcal{M} \models \exists x_1, \dots, x_n R_{a_i}(x_1, \dots, x_n)$ 
+for every $a_i$ with $i \leq k$ by the instance of the $A_{+}(a_i, a, a)$-axiom. 
+That makes every finite subtype of $T$ satisfiable, thus the whole type is finitely satisfiable in $\mathcal{M}$.
+$\mathcal{M}$ is $\omega$-saturated, then $T$ is realised in $\mathcal{M}$ by some $(x_1, \dots, x_n) \in \mathcal{M}^n$ and,
+moreover, $\mathcal{M} \models 1(x_1, \dots, x_n)$. As we have already said, $U_{x_1, \dots, x_n}$ is an ultrafilter, 
+but $U_{x_1, \dots, x_n} \subseteq U$, thus $U = U_{x_1, \dots, x_n}$, so $(x_1, \dots, x_n) \in h(U)$.
 
 That makes $h$ one-to-one.
 \end{proof}
@@ -843,7 +886,8 @@ $ $
 
 Let us show that $\overline{x} \in C_i (h(S))$, that is, there exists $\overline{y} = (y_1, \dots, y_n) \in h(S)$ such that $\overline{x} \equiv_{i} \overline{y}$.
 
-Then $\mathcal{M} \models 1(x_1, \dots, x_n)$ and $U_{x_1, \dots x_n} \in c_i{^{\mathcal{A}^{+}}} S$. But $\mathcal{A}^{+}$ is the complex algebra of the ultrafilter frame $\mathcal{F}_{\mathcal{A}}$.
+Then $\mathcal{M} \models 1(x_1, \dots, x_n)$ and $U_{x_1, \dots x_n} \in c_i{^{\mathcal{A}^{+}}} S$. 
+But $\mathcal{A}^{+}$ is the complex algebra of the ultrafilter frame $\mathcal{F}_{\mathcal{A}}$.
 Then we have:
 \begin{center}
 $c_i{^{\mathcal{A}^{+}}} S = \{ U_1 \in {\bf Spec}(\mathcal{A}) \: | \: \exists U' \in S  \: U_1 R_{i} U' \}$
@@ -875,15 +919,21 @@ $\mathcal{M} \models 1(\overline{y})$, $\overline{x} \equiv_i \overline{y}$, $U_
 Then $U_{\overline{y}} = U'$, then $\overline{y} \in h(S)$. Then $\overline{x} \in C_i (h (S))$.
 
 Suppose for the converse, $\overline{x} = (x_1, \dots, x_n) \in C_i (h(S))$. We need $\overline{x} \in h(c_i(S))$.
-Then there exists $\overline{y} = (y_1, \dots, y_n)$ such that $\overline{x} \equiv_i \overline{y}$ and $\overline{y} \in h(S)$. Then there exists an ultrafilter $U_{y_1, \dots, y_n} \in S$. Let us show that $\mathcal{M} \models 1(x_1, \dots, x_n)$ and $U_{x_1, \dots, x_n} \in c_i U_{y_1, \dots, y_n}$.
-Let $a \in U_{y_1, \dots, y_n}$. Then we have $\mathcal{M} \models R_a(y_1, \models, y_n)$. By the $A_{c_i}(a)$ axiom, we have $\mathcal{M} \models R_{c_i a}(x_1, \dots, x_n)$. Then $\mathcal{M} \models 1(x_1, \dots, x_n)$ and $c_i a \in U_{x_1, \dots, x_n}$, thus, $\overline{x} \in h(c_i(S))$.
+Then there exists $\overline{y} = (y_1, \dots, y_n)$ such that $\overline{x} \equiv_i \overline{y}$ and $\overline{y} \in h(S)$.
+Then there exists an ultrafilter $U_{y_1, \dots, y_n} \in S$. Let us show that $\mathcal{M} \models 1(x_1, \dots, x_n)$
+and $U_{x_1, \dots, x_n} \in c_i U_{y_1, \dots, y_n}$.
+Let $a \in U_{y_1, \dots, y_n}$. Then we have $\mathcal{M} \models R_a(y_1, \models, y_n)$. 
+By the $A_{c_i}(a)$ axiom, we have $\mathcal{M} \models R_{c_i a}(x_1, \dots, x_n)$. Then $\mathcal{M} \models 1(x_1, \dots, x_n)$
+and $c_i a \in U_{x_1, \dots, x_n}$, thus, $\overline{x} \in h(c_i(S))$.
 \item Let us show that $h$ preserves cylindrifications.
 
-Let $(x_1, \dots, x_n) \in \mathcal{M}^n$. Then $(x_1, \dots, x_n) \in D_{ij}$ iff $\mathcal{M} \models 1(x_1, \dots, x_n)$ and $x_i = x_j$ iff $U_{x_1, \dots, x_n} \in d_{ij}^{\mathcal{A}^{+}} = \{ U \in {\bf Spec}(\mathcal{A}) \: | \: d_ij \in U \}$ iff $\mathcal{M} \models d_{ij}^{\mathcal{M}}(x_1, \dots, x_n)$.
+Let $(x_1, \dots, x_n) \in \mathcal{M}^n$. Then $(x_1, \dots, x_n) \in D_{ij}$ iff $\mathcal{M} \models 1(x_1, \dots, x_n)$
+and $x_i = x_j$ iff $U_{x_1, \dots, x_n} \in d_{ij}^{\mathcal{A}^{+}} = \{ U \in {\bf Spec}(\mathcal{A}) \: | \: d_{ij} \in U \}$ 
+iff $\mathcal{M} \models d_{ij}^{\mathcal{M}}(x_1, \dots, x_n)$.
 \end{enumerate}
 \end{proof}
 
-\subsection{Finite dimensions}
+\subsection{Game-theoretic approach}
 
 \begin{definition}
 
