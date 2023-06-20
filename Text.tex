@@ -417,7 +417,7 @@ Complex algebras based on $\mathfrak{S}_{\omega}(X^x)$ form the class ${\bf Ws}_
 \end{equation}
 
 The following is by Goldblatt, see~\cite[Lemma 3.4]{goldblatt1995elementary}:
-\begin{lemma}
+\begin{lemma}~\label{rcadef}
 ${\bf RCA}_{\omega} = {\bf S} \: ({(\mathbb{S} {\bf Ud} \mathcal{F}\mathfrak{ct}_{\omega})}^{+}) = {\bf S} \: ({(\mathbb{S} {\bf Ud} (\mathcal{W}\mathfrak{ct}_{\omega}))}^{+}) = {\bf IGws}_{\omega}$
 \end{lemma}
 
@@ -540,7 +540,7 @@ but $x = \psi(z)$ for some $z$, so $x \in F(x)$.
 ${\bf Ub}\mathcal{F}\mathfrak{ct}_{\omega}$ is closed under ultraproducts.
 \end{col}
 
-\begin{theorem}
+\begin{theorem} \label{sctomega}
 $ $
 
 \begin{enumerate}
@@ -730,20 +730,110 @@ ${\bf IWs}_{\omega} \subseteq {\bf ICs}_{\omega}$.
   \end{center}
 \end{proof}
 
-\subsection{Elementary generating and proof of canonicity}
+\subsection{Elementary generating classes and proof of canonicity}
 
 \begin{lemma} Let $\mathcal{A}$ be a class of BAOs and let $\mathcal{F}$ be a class of Kripke frames, then:
 
   \begin{enumerate}
     \item ${({\bf HS} \mathcal{A})}_+ \subseteq \mathbb{S} \mathbb{H} (\mathcal{A}_+)$,
     \item ${({\bf HS} (\mathcal{F}^+))}_+ \subseteq \mathbb{S} \mathbb{H} {\bf Pw} \mathcal{A}$,
-    \item $({\bf HS} (\mathcal{F}^+)) \subseteq {\bf S} ({\mathbb{S} {\bf Pw} \mathcal{F}}^+)$.
+    \item~\label{pwfact}
+    ${\bf HS} (\mathcal{F}^+) \subseteq {\bf S} ({\mathbb{S} {\bf Pw} \mathcal{F}}^+)$.
   \end{enumerate}
 
 \end{lemma}
 
 \begin{proof}
+$ $
 
+\begin{enumerate}
+
+  \item Let $A \in {\bf HS}\mathcal{A}$, then there are $A_1$ and $A_2 \in \mathcal{A}$ such that $A \twoheadleftarrow A_1 \hookrightarrow A_2$,
+    then by duality we have $A_+ \hookrightarrow {A_1}_+ \twoheadleftarrow {A_2}_+$
+    so $A_+ \in \mathbb{S} \mathbb{H} (\mathcal{A}_+)$.
+  \item ${({\bf HS} (\mathcal{F}^+))}_+ \subseteq \mathbb{S} \mathbb{H} ({(\mathcal{A}_+)}^+) \subseteq \mathbb{S} \mathbb{H} {\bf Pw} \mathcal{A}$.
+  \item ${\bf HS} (\mathcal{F}^+) \subseteq {\bf S} ({(({\bf H S}(\mathcal{F}^+))_+)}^+) \subseteq {\bf S}({(\mathbb{H} \mathbb{S} {\bf Pw} \mathcal{F})}^+) \subseteq {\bf S}({(\mathbb{S} \mathbb{H} {\bf Pw} \mathcal{F})}^+) \subseteq {\bf S}({(\mathbb{S} {\bf Pw} \mathcal{F})}^+)$
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+  Let $\mathcal{F}$ be a class of frames closed under generated subframes and ultrapowers,
+  then ${\bf S} (\mathcal{F}^+)$ is closed under homomorphic images.
+  If $\mathcal{F}$ is also closed under disjoint unions, then ${\bf S} (\mathcal{F}^+)$ is a canonical variety.
+\end{theorem}
+
+\begin{proof}
+  If $\mathcal{F} = \mathbb{S} {\bf Pw} \mathcal{F}$, then by Lemma~\ref{pwfact} ${\bf H S} ({(\mathcal{F})}^+) = {\bf S} ({(\mathcal{F})}^+)$.
+
+  If ${\bf Ud}\mathcal{F} = \mathcal{F}$, then ${\bf P S} (\mathcal{F}^+) \subseteq {\bf S P} (\mathcal{F}^+) = {\bf S} ({({\bf Ud} \mathcal{F})}^+) = {\bf S} ({(\mathcal{F})}^+)$, 
+  so ${\bf S} ({(\mathcal{F})}^+)$ is closed under products, so ${\bf S} ({(\mathcal{F})}^+)$ is variety.
+
+  If $\mathcal{F}$ is also closed under ultrapowers, then ${\bf S} ({(\mathcal{F})}^+)$ is canonical, see~\cite[Corollary 3.6.3]{goldblatt1989varieties}.
+\end{proof}
+
+\begin{lemma}
+  Let $\mathcal{F}$ be a class of frames, then:
+
+  \begin{enumerate}
+    \item ${\bf H S} {(\mathbb{S} \mathcal{F})}^{+} \subseteq {\bf S} ({({\mathbb{S} {\bf Pw} \mathcal{F}})}^{+})$.
+    \item If ${\bf Pw} \mathcal{F} \subseteq \mathbb{H} \mathbb{S} \mathcal{F}$, 
+    then ${\bf HS} ({(\mathbb{S} \mathcal{F})}^{+}) = {\bf S} ({(\mathbb{S} \mathcal{F})}^{+})$.
+    \item ${({({\bf S} (\mathcal{F}^+))}_+)}^+ \subseteq {\bf S} {({\mathcal{F}^+}_+)}^+ \subseteq {\bf S} {({\bf Pw} \mathcal{F})}^+$.
+    \item If ${\bf Pw} \mathcal{F} \subseteq \mathbb{H} \mathcal{F}$, then ${\bf S} \mathcal{F}^+$ is canonical.
+    \item If ${\bf Pw} \mathcal{F} \subseteq \mathbb{H} \mathbb{S} \mathcal{F}$, then ${\bf S} {(\mathbb{S} \mathcal{F})}^+$ is canonical.
+    \item If ${\bf Pu} \mathcal{F} \subseteq \mathbb{H} \mathbb{S} {\bf Ud} \mathcal{F}$, then ${\bf Pu} {\bf Ud} \mathcal{F} \subseteq \mathbb{H} \mathbb{S} {\bf Ud} \mathcal{F}$.
+  \end{enumerate}
+\end{lemma}
+
+\begin{proof} $ $
+
+\begin{enumerate}
+  \item ${\bf H S} {(\mathbb{S} \mathcal{F})}^{+} \subseteq {\bf S} {(\mathbb{S} {\bf Pw} \mathbb{S} \mathcal{F})}^{+} \subseteq {\bf S} {(\mathbb{S} \mathbb{S} {\bf Pw} \mathcal{F})}^{+} \subseteq {\bf S} {(\mathbb{S} {\bf Pw} \mathcal{F})}^{+}$.
+  \item ${\bf HS} ({(\mathbb{S} \mathcal{F})}^{+}) \subseteq {\bf S} ({({\mathbb{S} {\bf Pw} \mathcal{F}})}^{+}) \subseteq {\bf S} ({({\mathbb{S} \mathbb{H} \mathbb{S} \mathcal{F}})}^{+}) \subseteq {\bf S} ({({\mathbb{H} \mathbb{S} \mathbb{S} \mathcal{F}})}^{+}) = {\bf S} ({({\mathbb{S} \mathcal{F}})}^{+})$.
+  \item Let $A \in {\bf S} \mathcal{F}^+$, then $A \hookrightarrow F^{+}$ for some $F \in \mathcal{F}$, then
+    ${(A_+)}^+ \hookrightarrow {({(F^+)}_+)}^+$.
+
+    To show the second inclusion, recall that ${(\mathcal{F}^+)}_+ \subseteq \mathbb{H} {\bf Pw} \mathcal{F}$, so we have
+      ${\bf S} {({(\mathcal{F}^+)}_+)}^+ \subseteq {\bf S} {(\mathbb{H} {\bf Pw} \mathcal{F})}^+ =  {\bf S} {({\bf Pw} \mathcal{F})}^+$.
+  \item ${({\bf S}{(\mathcal{F}^+)}_+)}^+ \subseteq {\bf S}{({({\bf Pw} \mathcal{F})}^+)} \subseteq {\bf S}{({(\mathbb{H} \mathcal{F})}^+)} = {\bf S} (\mathcal{F}^+)$.
+  \item If ${\bf Pw} \mathcal{F} \subseteq \mathbb{H} \mathbb{S} \mathcal{F}$, then:
+  \begin{center}
+    ${\bf Pw} \mathbb{S} \mathcal{F} \subseteq \mathbb{S} {\bf Pw} \mathcal{F} \subseteq \mathbb{S} \mathbb{H} \mathbb{S} \mathcal{F} \subseteq \mathbb{H} \mathbb{S} \mathbb{S} \mathcal{F} = \mathbb{H} \mathbb{S} \mathcal{F}$. 
+  \end{center}
+  Therefore, $(({\bf S} {(\mathbb{S} \mathcal{F})}^+)_+)^+ = {\bf S} {(\mathbb{S} \mathcal{F})}^+$.
+  \item 
+    ${\bf Pw} {\bf Ud} \mathcal{F} \subseteq {\bf Pu} {\bf Ub} \mathcal{F} \subseteq {\bf Ub} {\bf Pu} \mathcal{F} \subseteq {\bf Ub} \mathbb{H} \mathbb{S} {\bf Ud} \mathcal{F} \subseteq \mathbb{H} {\bf Ud} \mathbb{S} {\bf Ud} \mathcal{F} \subseteq \mathbb{H} \mathbb{S} {\bf Ud} {\bf Ud} \mathcal{F} = \mathbb{H} \mathbb{S} {\bf Ud} \mathcal{F}$.
+\end{enumerate}
+\end{proof}
+
+\begin{theorem}
+  If ${\bf Pu} \mathcal{F} \subseteq \mathbb{H} \mathbb{S} {\bf Ud} \mathcal{F}$,
+  then ${\bf S}({(\mathbb{S} {\bf Ud} \mathcal{F})}^+)$ is a canonical variety.
+\end{theorem}
+
+\begin{proof}
+  By the previous lemma, ${\bf S}({(\mathbb{S} {\bf Ud} \mathcal{F})}^+)$ is canonical and closed under homomorphic images.
+  It is also closed under products since:
+
+  \begin{center}
+    ${\bf PS} ({(\mathbb{S} {\bf Ud} \mathcal{F})}^+) \subseteq {\bf SP} ({(\mathbb{S} {\bf Ud} \mathcal{F})}^+) = {\bf S} ({({\bf Ud} \mathbb{S} {\bf Ud} \mathcal{F})}^+) = {\bf S} ({(\mathbb{S} {\bf Ud} \mathcal{F})}^+)$.
+  \end{center}
+\end{proof}
+
+\begin{theorem}
+  ${\bf RCA}_{\omega}$ and ${\bf ICrs}_{\omega}$ are canonical varieties.
+\end{theorem}
+
+\begin{proof}
+  By Lemma~\ref{rcadef}, ${\bf RCA}_{\omega} = {\bf S} (\mathbb{S} {\bf Ud} \mathcal{F}\mathfrak{ct}_{\omega})^+$.
+  By the previous theorem, this is enough to show that 
+  ${\bf Pu} \mathcal{F}\mathfrak{ct}_{\omega} \subseteq \mathbb{H} \mathbb{S} {\bf Ud} \mathcal{F}\mathfrak{ct}_{\omega}$,
+  which holds by Theorem~\ref{puub}.
+
+  As regards, ${\bf ICrs}_{\omega} = {\bf S} ((\mathcal{S}\mathfrak{ct}_{\omega})^+)$.
+  We have ${\bf ICrs}_{\omega} = {\bf S} ((\mathbb{S} {\bf Ud} \mathcal{S}\mathfrak{ct}_{\omega})^+)$,
+  and also, by Theorem~\ref{sctomega}, 
+  ${\bf Pu} \mathcal{S}\mathfrak{ct}_{\omega} \subseteq \mathcal{S}\mathfrak{ct}_{\omega} \subseteq \mathbb{H} \mathbb{S} {\bf Ud} \mathcal{S}\mathfrak{ct}_{\omega}$.
 \end{proof}
 
 \section{Representability via games}
@@ -770,9 +860,9 @@ For that we need such model-theoretic notions as saturation and types, see~\cite
 \end{enumerate}
 \end{definition}
 
-By default, a saturated model is an $\omega$-saturated model for us.
+By default, a \emph{saturated} model is an $\omega$-saturated model for us.
 
-A couple of useful facts from \cite{chang1990model} and \cite{hodges1993model}:
+A couple of useful facts from~\cite{chang1990model} and~\cite{hodges1993model}:
 
 \begin{fact} Let $\mathcal{M}$ be an FO-structue and $\kappa$ a cardinal, then:
 \begin{enumerate}
